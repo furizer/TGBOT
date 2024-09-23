@@ -30,27 +30,42 @@ bot.hears('Значения карт', async (ctx) => {
     await ctx.reply('Выберите аркан', {
         reply_markup: keyboards.cardValue
     })
-
 })
 
 bot.hears('Старший', async (ctx) => {
     await ctx.reply('Выберите карту', {
         reply_markup: keyboards.oldest
     })
-
 })
 
 bot.hears('Младший', async (ctx) => {
-    const keyboard = new Keyboard()
-        .text("Старший").row()
-        .text("Младший")
-        .oneTime()
-        .resized()
-
     await ctx.reply('Выберите масть', {
-        reply_markup: keyboard
+        reply_markup: keyboards.yang
     })
+})
 
+bot.hears('Жезлы', async (ctx) => {
+    await ctx.reply('Выберите масть', {
+        reply_markup: keyboards.wands
+    })
+})
+
+bot.hears('Диски', async (ctx) => {
+    await ctx.reply('Выберите масть', {
+        reply_markup: keyboards.disks
+    })
+})
+
+bot.hears('Кубки', async (ctx) => {
+    await ctx.reply('Выберите масть', {
+        reply_markup: keyboards.cups
+    })
+})
+
+bot.hears('Мечи', async (ctx) => {
+    await ctx.reply('Выберите масть', {
+        reply_markup: keyboards.swords
+    })
 })
 
 bot.catch(err => {

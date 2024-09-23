@@ -23,11 +23,12 @@ export const keyboards = {
     start: new Keyboard()
         .text('Сделать расклад').row()
         .text('Значения карт')
-        .resized(),
+        .resized().oneTime(),
 
     cardValue: new Keyboard()
         .text("Старший").row()
-        .text("Младший")
+        .text("Младший").row()
+        .text("🔙")
         .oneTime()
         .resized(),
 
@@ -46,6 +47,7 @@ export const keyboards = {
         .text("Диски").row()
         .text("Кубки")
         .text("Мечи").row()
+        .text("🔙")
         .oneTime()
         .resized()
 }

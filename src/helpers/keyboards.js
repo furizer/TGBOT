@@ -9,6 +9,7 @@ function prepareNameArray(fromArray) {
         }
         result.push([item.name, fromArray[index + 1]?.name])
     })
+    result.push(['🔙'])
     return result
 }
 

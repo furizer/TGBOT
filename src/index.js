@@ -1,31 +1,56 @@
 import { configDotenv } from "dotenv"
-import { Bot, Keyboard } from "grammy"
+import { Bot, Keyboard, session } from "grammy"
+import { getCardsMock, getTextMock } from "./helpers/functions.js"
+import { keyboards } from "./helpers/keyboards.js"
+
 configDotenv()
+
 const bot = new Bot(process.env.API_TOKEN)
 
-// bot.api.setMyCommands(
-//     [
-//         {
-//             command: 'start', description: 'Запуск Бота'
-//         },
-//         {
-//             command: 'hello', description: 'Сказать'
-//         },
-//     ]
-// )
+bot.use(session({ initial: () => ({}) }))
+
+const cardsMock = getCardsMock()
+const textMock = getTextMock()
+
+//
+//
+// 
 
 bot.command('start', async (ctx) => {
-    const keyboard = new Keyboard().text('Предсказание дня').row().text('Сделать расклад').row().text('Значения карт').resized()
+    await ctx.reply('Привет! Я твой личный бот таролог', {
+        reply_markup: keyboards.start
+    })
+})
 
-    await ctx.react('❤‍🔥')
-    await ctx.reply('a', {
-        reply_markup: keyboard
+bot.hears('Сделать расклад', async (ctx) => {
+    await ctx.reply('Задайте свой вопрос')
+})
+
+bot.hears('Значения карт', async (ctx) => {
+    await ctx.reply('Выберите аркан', {
+        reply_markup: keyboards.cardValue
     })
 
 })
 
-bot.command('hello', async (ctx) => {
-    await ctx.reply('Привет')
+bot.hears('Старший', async (ctx) => {
+    await ctx.reply('Выберите карту', {
+        reply_markup: keyboards.oldest
+    })
+
+})
+
+bot.hears('Младший', async (ctx) => {
+    const keyboard = new Keyboard()
+        .text("Старший").row()
+        .text("Младший")
+        .oneTime()
+        .resized()
+
+    await ctx.reply('Выберите масть', {
+        reply_markup: keyboard
+    })
+
 })
 
 bot.catch(err => {

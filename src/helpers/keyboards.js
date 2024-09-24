@@ -1,6 +1,12 @@
 import { Keyboard } from "grammy"
 import { getCardsMock } from "./functions.js"
 
+const oldestArray = getCardsMock()['oldest']
+const wandsArray = getCardsMock()['yang']['wands']
+const cupsArray = getCardsMock()['yang']['cups']
+const disksArray = getCardsMock()['yang']['disks']
+const swordsArray = getCardsMock()['yang']['swords']
+
 function prepareNameArray(fromArray) {
     const result = []
     fromArray.forEach((item, index) => {
@@ -12,12 +18,6 @@ function prepareNameArray(fromArray) {
     result.push(['🔙Назад'])
     return result
 }
-
-const oldestArray = getCardsMock()['oldest']
-const wandsArray = getCardsMock()['yang']['wands']
-const cupsArray = getCardsMock()['yang']['cups']
-const disksArray = getCardsMock()['yang']['disks']
-const swordsArray = getCardsMock()['yang']['swords']
 
 export const keyboards = {
     start: new Keyboard()
@@ -51,7 +51,7 @@ export const keyboards = {
         .text("Диски").row()
         .text("Кубки")
         .text("Мечи").row()
-        .text("🔙")
+        .text("🔙Назад")
         .oneTime()
         .resized()
 }

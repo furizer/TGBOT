@@ -7,8 +7,3 @@ export function getCardsMock() {
     )
 }
 
-export function getTextMock() {
-    return JSON.parse(
-        fs.readFileSync(path.resolve(import.meta.dirname, '../mock/text.json'))
-    )
-}

@@ -1,5 +1,5 @@
 import { Keyboard } from "grammy"
-import { getCardsMock, getTextMock } from "./functions.js"
+import { getCardsMock } from "./functions.js"
 
 function prepareNameArray(fromArray) {
     const result = []
@@ -9,7 +9,7 @@ function prepareNameArray(fromArray) {
         }
         result.push([item.name, fromArray[index + 1]?.name])
     })
-    result.push(['🔙'])
+    result.push(['🔙Назад'])
     return result
 }
 
@@ -21,14 +21,18 @@ const swordsArray = getCardsMock()['yang']['swords']
 
 export const keyboards = {
     start: new Keyboard()
-        .text('Сделать расклад').row()
-        .text('Значения карт')
+        .text('Задать вопрос🧿🌟').row()
+        .text('Значения карт🃏')
+        .text('Виды раскладов⛩').row()
+        .text('Карта дня🌞')
+        .text('Подписка🪬').row()
+        .text('Обратная связь💡')
         .resized().oneTime(),
 
     cardValue: new Keyboard()
         .text("Старший").row()
         .text("Младший").row()
-        .text("🔙")
+        .text("🔙Назад")
         .oneTime()
         .resized(),
 

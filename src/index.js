@@ -1,6 +1,7 @@
 import { configDotenv } from "dotenv"
 import { Bot, Keyboard, session } from "grammy"
-import { getCardsMock, getTextMock } from "./helpers/functions.js"
+import { getCardsMock } from "./helpers/functions.js"
+import text from "./mock/text.js"
 import { keyboards } from "./helpers/keyboards.js"
 
 configDotenv()
@@ -10,27 +11,45 @@ const bot = new Bot(process.env.API_TOKEN)
 bot.use(session({ initial: () => ({}) }))
 
 const cardsMock = getCardsMock()
-const textMock = getTextMock()
 
 //
 //
 // 
 
 bot.command('start', async (ctx) => {
-    await ctx.reply('Привет! Я твой личный бот таролог', {
+    await ctx.reply(text.start, {
         reply_markup: keyboards.start
     })
 })
 
-bot.hears('Сделать расклад', async (ctx) => {
+bot.hears('Задать вопрос🧿🌟', async (ctx) => {
     await ctx.reply('Задайте свой вопрос')
 })
 
-bot.hears('Значения карт', async (ctx) => {
+bot.hears('Значения карт🃏', async (ctx) => {
     await ctx.reply('Выберите аркан', {
         reply_markup: keyboards.cardValue
     })
 })
+
+bot.hears('Виды раскладов⛩', async (ctx) => {
+    await ctx.reply('Вот известные мне виды раскладов: ', {
+        // reply_markup: keyboards.cardValue
+    })
+})
+
+bot.hears('Подписка🪬', async (ctx) => {
+    await ctx.reply('Раздел подписки в разработке, я буду вашим советником без ограничений!', {
+        // reply_markup: keyboards.cardValue
+    })
+})
+
+bot.hears('Обратная связь💡', async (ctx) => {
+    await ctx.reply(text.info, {
+        // reply_markup: keyboards.cardValue
+    })
+})
+
 
 bot.hears('Старший', async (ctx) => {
     await ctx.reply('Выберите карту', {
@@ -93,8 +112,8 @@ for (const key in cardsMock['yang']) {
     })
 }
 
-bot.hears('🔙', async (ctx) => {
-    await ctx.reply('Привет! Я твой личный бот таролог', {
+bot.hears('🔙Назад', async (ctx) => {
+    await ctx.reply(text.start, {
         reply_markup: keyboards.start
     })
 })

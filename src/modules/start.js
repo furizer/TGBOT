@@ -2,6 +2,13 @@ import text from "../mock/text.js"
 import { keyboards } from "../helpers/keyboards.js"
 
 export default (bot) => {
+    bot.api.setMyCommands([
+        {
+            command: 'start',
+            description: 'Главное меню'
+        }
+    ])
+    
     bot.command('start', async (ctx) => {
 
         await ctx.reply(text.start, {

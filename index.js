@@ -1,7 +1,7 @@
 import { configDotenv } from "dotenv"
 import { Bot, session } from "grammy"
-import start from "./modules/start.js"
-import cards from "./modules/cards.js"
+import start from "./src/modules/start.js"
+import cards from "./src/modules/cards.js"
 
 configDotenv()
 

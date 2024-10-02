@@ -3,9 +3,13 @@ import { keyboards } from "../helpers/keyboards.js"
 
 export default (bot) => {
     bot.command('start', async (ctx) => {
+
         await ctx.reply(text.start, {
             reply_markup: keyboards.start
         })
+
+        ctx.session.pizzaCount--
+        await ctx.reply(`У вас нет действующей подписки, осталось ${ctx.session.pizzaCount} запросов`)
     })
 
     bot.hears('Задать вопрос🧿🌟', async (ctx) => {
@@ -25,15 +29,18 @@ export default (bot) => {
     })
 
     bot.hears('Подписка🪬', async (ctx) => {
-        await ctx.reply('Раздел подписки в разработке, я буду вашим советником без ограничений!', {
-            // reply_markup: keyboards.cardValue
+        let decr = '\n\n Возникли проблемы? Пишите @furizer'
+        let text = ctx.session.subscribe
+            ? `У вас есть активная подписка до ${ctx.session.subscribeTo} ${decr}`
+            : `У вас нет активной подписки ${decr}`
+
+        await ctx.reply(text, {
+            reply_markup: keyboards.subscribe
         })
     })
 
     bot.hears('Обратная связь💡', async (ctx) => {
-        await ctx.reply(text.info, {
-            // reply_markup: keyboards.cardValue
-        })
+        await ctx.reply(text.info)
     })
 
     bot.hears('🔙Назад', async (ctx) => {

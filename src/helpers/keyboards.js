@@ -1,4 +1,4 @@
-import { Keyboard } from "grammy"
+import { Keyboard, InlineKeyboard } from "grammy"
 import { getCardsMock } from "./functions.js"
 
 const oldestArray = getCardsMock()['oldest']
@@ -47,12 +47,18 @@ export const keyboards = {
     swords: Keyboard.from(prepareNameArray(swordsArray)),
 
     yang: new Keyboard()
-        .text("Жезлы")
-        .text("Диски").row()
-        .text("Кубки")
-        .text("Мечи").row()
+        .text("Жезлы 🪄")
+        .text("Пентакли 💿").row()
+        .text("Кубки 🍷")
+        .text("Мечи ⚔️").row()
         .text("🔙Назад")
         .oneTime()
-        .resized()
+        .resized(),
+    
+    subscribe: new InlineKeyboard()
+        .text('10 запросов 99 рублей').row()
+        .text('Безлимит 7 дней 199 рублей').row()
+        .text('Безлимит 14 дней 299 рублей').row()
+        .text('Безлимит 30 дней 399 рублей').row()
 }
 

@@ -7,3 +7,15 @@ export function getCardsMock() {
     )
 }
 
+export function paySubscribe(interval = true) {
+    
+}
+
+export function Subscribe(interval = true) {
+
+}
+
+export function checkSubscribe() {  
+    return false
+}
+

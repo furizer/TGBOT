@@ -1,0 +1,15 @@
+---
+meta:
+  environment: node
+  toolchain:
+    name: npm
+    version: 20
+build:
+  artifacts:
+    '*': /
+  skip: true
+run:
+  scriptName: index.js
+  command: npm run prod
+  persistenceMount: /data
+  containerPort: 80

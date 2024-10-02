@@ -1,8 +1,9 @@
+---
 meta:
   environment: node
   toolchain:
     name: npm
-    version: "20"
+    version: 20
 build:
   artifacts:
     "*": /

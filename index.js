@@ -2,6 +2,7 @@ import { configDotenv } from "dotenv"
 import { Bot, session } from "grammy"
 import start from "./src/modules/start.js"
 import cards from "./src/modules/cards.js"
+import payments from './src/modules/payments.js';
 
 configDotenv()
 
@@ -20,8 +21,11 @@ start(bot)
 
 cards(bot)
 
+payments(bot)
+
 bot.catch(err => {
     console.log(err)
 })
 
 bot.start() 
+

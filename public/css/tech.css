@@ -1,0 +1,57 @@
+/* Обнуляющие стили */
+* {
+  margin: 0;
+  padding: 0;
+}
+
+/* Устанавливаем box-sizing для всех элементов */
+html {
+}
+
+*, *:before, *:after {
+  box-sizing: inherit;
+}
+
+/* Убираем отступы у body */
+body {
+  margin: 0;
+  padding: 0;
+  font-family: Arial, sans-serif;
+  line-height: 1.5;
+}
+
+/* Убираем маркеры у списков */
+ul, ol {
+  list-style: none;
+}
+
+/* Убираем подчеркивание у ссылок */
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+/* Убираем стили у заголовков */
+h1, h2, h3, h4, h5, h6 {
+  margin: 0;
+  font-size: inherit;
+  font-weight: inherit;
+}
+
+/* Убираем стили у кнопок */
+button, input, textarea, select {
+  margin: 0;
+  padding: 0;
+  border: none;
+  background: none;
+  font-family: inherit;
+  font-size: inherit;
+  color: inherit;
+}
+
+/* Убираем рамки у изображений */
+img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}

@@ -8,9 +8,8 @@ export default (bot) => {
             description: 'Главное меню'
         }
     ])
-    
-    bot.command('start', async (ctx) => {
 
+    bot.command('start', async (ctx) => {
         await ctx.reply(text.start, {
             reply_markup: keyboards.start
         })
@@ -26,6 +25,12 @@ export default (bot) => {
     bot.hears('Значения карт🃏', async (ctx) => {
         await ctx.reply('Выберите аркан', {
             reply_markup: keyboards.cardValue
+        })
+    })
+
+    bot.hears('Карта дня🌞', async (ctx) => {
+        await ctx.reply('Ваша карта дня: Если вы хотите получать карту дня регулярно, приобретите подписку', {
+            // reply_markup: keyboards.cardValue
         })
     })
 
